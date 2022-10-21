@@ -1,23 +1,34 @@
-import json
-from pprint import pprint
-from re import S
-from typing import Any, Literal
+from pathlib import Path
+from typing import Literal
 import msgspec
 from msgspec import Struct
 
+ID = str | list[str]
 
-class TileInfo(Struct, omit_defaults=True):
+
+class TileBase(Struct, omit_defaults=True):
+    ...
+
+
+class TileInfo(TileBase):
     height: int
     width: int
     iso: bool = False
     pixelscale: int = 1
 
 
-class Tile(Struct, omit_defaults=True):
-    id: str | list[str]
+class AdditionalTile(TileBase):
+    id: ID
+    fg: int | list[int]
+
+
+class Tile(TileBase):
+    id: ID
     fg: int | None = None
     bg: int | None = None
     rotates: bool = False
+    multitile: bool = False
+    additional_tiles: list[AdditionalTile] | None = None
 
 
 class Ascii(Struct):
@@ -34,16 +45,17 @@ class SpriteSheet(Struct, omit_defaults=True):
     ascii: list[Ascii] | None = None
 
 
-class TileConfig(Struct, rename={"tiles_new": "tiles-new"}):
+class TileConfigBase(Struct, rename={"tiles_new": "tiles-new"}):
+    ...
+
+
+class TileConfig(TileConfigBase):
     tile_info: tuple[TileInfo]
     tiles_new: list[SpriteSheet]
 
 
 if __name__ == "__main__":
-    from pathlib import Path
-
     res = msgspec.json.decode(  # type: ignore
-        Path("ASCIITileset/tile_config.json").read_bytes(), type=TileConfig
+        Path("ASCIITileset/tile_config.json").read_bytes(), type=TileConfig  # type: ignore
     )
-    # pprint(res)
     Path("tile_config.json").write_bytes(msgspec.json.encode(res))

@@ -58,16 +58,52 @@
         { "id": ["player_female", "player_male"], "fg": 144 },
         { "id": ["t_open_air", "t_open_air_rooved"], "bg": 811 },
         { "id": "lighting_hidden", "fg": 1067, "bg": 1067 },
-        { "id": "explosion_weak", "fg": 1290 },
+        {
+          "id": "explosion_weak",
+          "fg": 1290,
+          "multitile": true,
+          "additional_tiles": [
+            { "id": "center", "fg": 1290 },
+            { "id": "corner", "fg": 1305 },
+            { "id": "edge", "fg": 1290 },
+            { "id": "end_piece", "fg": 1290 },
+            { "id": "t_connection", "fg": 1290 },
+            { "id": "unconnected", "fg": 1290 }
+          ]
+        },
         {
           "id": ["animation_bullet_normal", "animation_bullet_shrapnel"],
           "fg": 1375
         },
         { "id": "infrared_creature", "fg": 1423 },
-        { "id": "explosion", "fg": 1546 },
+        {
+          "id": "explosion",
+          "fg": 1546,
+          "multitile": true,
+          "additional_tiles": [
+            { "id": "center", "fg": 1546 },
+            { "id": "corner", "fg": 1561 },
+            { "id": "edge", "fg": 1546 },
+            { "id": "end_piece", "fg": 1546 },
+            { "id": "t_connection", "fg": 1546 },
+            { "id": "unconnected", "fg": 1546 }
+          ]
+        },
         { "id": "animation_hit", "bg": 1579 },
         { "id": ["footstep", "footstep_above", "footstep_below"], "fg": 1679 },
-        { "id": "explosion_medium", "fg": 1802 },
+        {
+          "id": "explosion_medium",
+          "fg": 1802,
+          "multitile": true,
+          "additional_tiles": [
+            { "id": "center", "fg": 1802 },
+            { "id": "corner", "fg": 1817 },
+            { "id": "edge", "fg": 1802 },
+            { "id": "end_piece", "fg": 1802 },
+            { "id": "t_connection", "fg": 1802 },
+            { "id": "unconnected", "fg": 1802 }
+          ]
+        },
         { "id": "weather_acid_drop", "bg": 2167 },
         { "id": "t_grass_tall", "bg": 2403 },
         { "id": "t_grass_long", "bg": 2418 },
