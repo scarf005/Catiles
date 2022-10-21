@@ -1,5 +1,7 @@
 # Tileset Tools
 
+because I can't stand using `compose.py` and `decompose.py`
+
 [![PyPI - Version](https://img.shields.io/pypi/v/tileset-tools.svg)](https://pypi.org/project/tileset-tools)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tileset-tools.svg)](https://pypi.org/project/tileset-tools)
 
@@ -7,8 +9,9 @@
 
 **Table of Contents**
 
-- [Installation](#installation)
-- [License](#license)
+- [Tileset Tools](#tileset-tools)
+  - [Installation](#installation)
+  - [License](#license)
 
 ## Installation
 

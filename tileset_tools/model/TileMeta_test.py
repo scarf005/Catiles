@@ -1,5 +1,5 @@
-from tileset_tools.model.TileMeta import TileMeta
-from tileset_tools.util.test_utils import json_bytes
+from tileset_tools.model.TileInfo import TileMeta
+from tileset_tools.util.json_utils import json_bytes
 
 from msgspec.json import decode, encode  # type: ignore
 
