@@ -33,11 +33,22 @@ path = "tileset_tools/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
-  "pytest",
-  "pytest-cov",
   "msgspec",
   "flupy",
 ]
+
+[tool.hatch.envs.test]
+dependencies = [
+  "pytest",
+  "pytest-cov",
+]
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "black"
+]
+
 
 [tool.hatch.envs.default.scripts]
 test = "pytest"
