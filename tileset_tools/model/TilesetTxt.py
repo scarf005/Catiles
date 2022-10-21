@@ -1,3 +1,16 @@
+"""
+RETRO DAYS TILESET
+#Name of the tileset
+NAME: retrodays
+#Viewing (Option) name of the tileset
+VIEW: RetroDays
+#JSON Path - Default of gfx/tile_config.json
+JSON: tile_config.json
+#Tileset Path - Default of gfx/tinytile.png
+TILESET: tiles.png
+"""
+# Example of a tileset.txt file
+
 from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar
@@ -5,11 +18,14 @@ from flupy import flu
 import re
 
 
+
+
 @dataclass
 class TilesetTxt:
     """
     Provides metadata about a tileset.
     """
+
     NAME: str
     VIEW: str
     JSON: str
@@ -36,18 +52,5 @@ class TilesetTxt:
 
 
 if __name__ == "__main__":
-    text = """
-    #RETRO DAYS TILESET
-    #Name of the tileset
-    NAME: retrodays # Foo
-
-
-    #Viewing (Option) name of the tileset
-    VIEW: RetroDays
-    #JSON Path - Default of gfx/tile_config.json
-    JSON: tile_config.json
-    #Tileset Path - Default of gfx/tinytile.png
-    TILESET: tiles.png
-    """
-    txt = TilesetTxt.from_text(text)
+    txt = TilesetTxt.from_text(__doc__)  # type: ignore
     print(txt)
