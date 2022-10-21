@@ -35,9 +35,12 @@ path = "tileset_tools/__about__.py"
 dependencies = [
   "pytest",
   "pytest-cov",
+  "msgspec",
+  "flupy",
 ]
 
 [tool.hatch.envs.default.scripts]
+test = "pytest"
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=tileset_tools --cov=tests"
 no-cov = "cov --no-cov"
 
@@ -65,3 +68,4 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
