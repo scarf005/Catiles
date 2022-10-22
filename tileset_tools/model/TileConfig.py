@@ -44,6 +44,11 @@ class SpriteSheet(Struct, omit_defaults=True):
     tiles: list[Tile]
     ascii: list[Ascii] | None = None
 
+    sprite_width: int = 16
+    sprite_height: int = 16
+    sprite_offset_x: int = 0
+    sprite_offset_y: int = 0
+    pixelscale: float = 1.0
 
 class TileConfigBase(Struct, rename={"tiles_new": "tiles-new"}):
     ...
