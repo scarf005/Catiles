@@ -4,12 +4,12 @@ import msgspec
 from pathlib import Path
 
 
-from tileset_tools.model.TileConfig import TileConfigBase
+from tileset_tools.model.TileConfig import ID, TileConfig, TileConfigBase
 from tileset_tools.util import lift_list
 
 
 class TileID(Struct):
-    id: str | list[str]
+    id: ID
 
 
 class TileIDSheet(Struct):
@@ -23,8 +23,13 @@ class TileIDs(TileConfigBase):
 id_decoder = msgspec.json.Decoder(TileIDs)
 
 
-def get_tileset_ids(path: Path) -> list[str]:
-    tiles_new = id_decoder.decode(path.read_bytes()).tiles_new
+def get_tileset_ids(config: TileIDs | TileConfig | Path) -> list[str]:
+    match config:
+        case Path():
+            tiles_new = id_decoder.decode(config.read_bytes()).tiles_new
+        case _:
+            tiles_new = config.tiles_new
+
     return (
         flu(tiles_new)
         .map(lambda x: x.tiles)
