@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from pathlib import Path
 from pprint import pprint
 import typer
@@ -13,6 +15,9 @@ def tileset_ids(path: Path):
     List all tileset ids in a tile_config.json file.
     """
 
+    if path.is_dir():
+        path /= "tile_config.json"
+
     pprint(get_tileset_ids(path))
 
 
@@ -26,6 +31,7 @@ def decompose(path: Path):
 
     # decompose_tileset(path)
     print("TODO")
+
 
 if __name__ == "__main__":
     app()
