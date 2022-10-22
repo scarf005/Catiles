@@ -34,13 +34,14 @@ path = "tileset_tools/__about__.py"
 [tool.hatch.envs.default]
 dependencies = [
   "msgspec",
-  "flupy",
+  "flupy>=1.2.0",
 ]
 
 [tool.hatch.envs.test]
 dependencies = [
   "pytest",
   "pytest-cov",
+  "pytest-parallel",
 ]
 
 [tool.hatch.envs.lint]
@@ -52,6 +53,7 @@ dependencies = [
 
 [tool.hatch.envs.default.scripts]
 test = "pytest"
+test-parallel = "pytest --workers auto"
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=tileset_tools --cov=tests"
 no-cov = "cov --no-cov"
 
