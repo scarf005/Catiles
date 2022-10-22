@@ -11,21 +11,21 @@ class TileMeta(Struct, frozen=True):
     pixelscale: int = 1
 
 
-TileInfo = tuple[
-    TileMeta,
-]
+class SheetMeta(Struct, frozen=True, omit_defaults=True):
+    fallback: bool = False
 
-"""
+
+
+TEXT = b"""
 [
-  {
-    "height": 10,
-    "width": 10
-  },
-  {
-    "ASCIITiles.png": { "//": "indices 0 to 79" }
-  },
-  {
-    "fallback.png": { "fallback": true }
-  }
+  { "height": 10, "width": 10 },
+  { "ASCIITiles.png": { "//": "indices 0 to 79" } },
+  { "fallback.png": { "fallback": true } }
 ]
 """
+
+if __name__ == "__main__":
+    from msgspec import json
+
+    decoder = json.Decoder(list[TileMeta])
+    print(decoder.decode(TEXT))
