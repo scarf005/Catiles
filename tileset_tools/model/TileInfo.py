@@ -11,7 +11,9 @@ class TileMeta(Struct, frozen=True):
     pixelscale: int = 1
 
 
-TileInfo = tuple[TileMeta, ]
+TileInfo = tuple[
+    TileMeta,
+]
 
 """
 [

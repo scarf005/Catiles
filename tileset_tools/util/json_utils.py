@@ -10,4 +10,3 @@ def json_bytes(data: dict[str, Any]):
         ),
         encoding="utf-8",
     )
-

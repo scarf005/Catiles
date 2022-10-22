@@ -18,8 +18,6 @@ from flupy import flu
 import re
 
 
-
-
 @dataclass
 class TilesetTxt:
     """

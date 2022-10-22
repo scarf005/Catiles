@@ -50,6 +50,7 @@ class SpriteSheet(Struct, omit_defaults=True):
     sprite_offset_y: int = 0
     pixelscale: float = 1.0
 
+
 class TileConfigBase(Struct, rename={"tiles_new": "tiles-new"}):
     ...
 
