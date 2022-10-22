@@ -47,15 +47,17 @@ dependencies = [
 [tool.hatch.envs.lint]
 detached = true
 dependencies = [
-  "black"
+  "black",
+  "mypy",
 ]
-
 
 [tool.hatch.envs.default.scripts]
 test = "pytest"
 test-parallel = "pytest --workers auto"
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=tileset_tools --cov=tests"
 no-cov = "cov --no-cov"
+lint = "black tileset_tools"
+type = "dmypy check tileset_tools"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["310", "311"]
@@ -82,3 +84,6 @@ exclude_lines = [
   "if TYPE_CHECKING:",
 ]
 
+[tool.black]
+line-length = 80
+target-version = ["py310"]
