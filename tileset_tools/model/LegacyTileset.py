@@ -15,6 +15,31 @@ class LegacyFillerValue(TypedDict):
     exclude: list[str]
 
 
+LegacyFiller = dict[str, LegacyFillerValue]
+
+
+class __LegacyTileSheetSprite(TypedDict):
+    sprite_width: int
+    sprite_height: int
+
+
+class __LegacyTileSheetOffset(TypedDict):
+    sprite_offset_x: int
+    sprite_offset_y: int
+
+
+class LegacyTilesheetValue(
+    __LegacyTileSheetSprite,
+    __LegacyTileSheetOffset,
+    total=False,
+):
+    pixelscale: int
+    sprites_accross: int
+
+
+LegacyTilesheet = dict[str, LegacyTilesheetValue]
+
+
 if __name__ == "__main__":
     from rich import print
 

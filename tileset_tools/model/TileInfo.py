@@ -12,8 +12,15 @@ class TileMeta(Struct, frozen=True):
 
 
 class SheetMeta(Struct, frozen=True, omit_defaults=True):
+    sprite_width: int | None
+    sprite_height: int | None
+    sprite_offset_x: int | None
+    sprite_offset_y: int | None
     fallback: bool = False
 
+
+class TileInfo(Struct):
+    tilesets: list[SheetMeta]
 
 
 TEXT = b"""

@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from pprint import pprint
+
 import typer
 
 from tileset_tools.list_tileset_ids import get_tileset_ids
@@ -31,6 +32,13 @@ def decompose(path: Path):
 
     # decompose_tileset(path)
     print("TODO")
+
+
+@app.command()
+def migrate(path: Path):
+    """
+    Migrate a `tile_info.json` file into `tileset.json`.
+    """
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import Literal
+from flupy import flu
 import msgspec
 from msgspec import Struct
 
@@ -32,14 +33,22 @@ class Tile(TileBase):
 
 
 class Ascii(Struct):
+    """Individual colored ASCII sheet data.
+
+    :param offset: number of tiles to skip before starting to read
+    :param bold: whether the sheet is bold
+    """
+
     offset: int
     bold: bool
     color: Literal[
         "WHITE", "BLACK", "RED", "YELLOW", "GREEN", "CYAN", "BLUE", "MAGENTA"
     ]
 
+
 class SpriteSheetBase(Struct, omit_defaults=True):
     tiles: list[Tile]
+
 
 class SpriteSheet(SpriteSheetBase):
     file: str
@@ -69,10 +78,22 @@ class TileConfig(
     def tile_info(self) -> TileInfo:
         return self.__tile_info[0]
 
+    @property
+    def fallback(self) -> SpriteSheet:
+        "assumes fallback is last"
+        if (last := self.tilesheets[-1]).ascii is not None:
+            return last
+
+        return (
+            flu(reversed(self.tilesheets))
+            .filter(lambda x: x.ascii is not None)
+            .first()
+        )
+
 
 if __name__ == "__main__":
     res = msgspec.json.decode(  # type: ignore
-        Path("ASCIITileset/tile_config.json").read_bytes(), type=TileConfig  # type: ignore
+        Path("ASCIITileset/tile_config.json").read_bytes(), type=TileConfig
     )
     print(res.tile_info)
     print(len(res.tilesheets[0].tiles))
