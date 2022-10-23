@@ -5,7 +5,7 @@ from rich import print
 import typer
 from typer import Option as Opt
 
-from tileset_tools.transform import get_tileset_ids
+from bn_tileset_tools.transform import get_tileset_ids
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 

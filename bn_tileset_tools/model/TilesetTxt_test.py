@@ -1,4 +1,4 @@
-from tileset_tools.model.TilesetTxt import TilesetTxt
+from bn_tileset_tools.model.TilesetTxt import TilesetTxt
 
 
 TEXT = """

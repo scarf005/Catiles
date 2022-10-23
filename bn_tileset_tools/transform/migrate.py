@@ -6,8 +6,8 @@ from rich import print
 from rich.progress import track
 
 import msgspec
-from tileset_tools.transform import tileconfig_decoder
-from tileset_tools.model import (
+from bn_tileset_tools.transform import tileconfig_decoder
+from bn_tileset_tools.model import (
     Filler,
     Tileset,
     TilesetDefault,

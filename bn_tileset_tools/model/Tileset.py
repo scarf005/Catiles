@@ -2,7 +2,7 @@ from pathlib import Path
 from flupy import flu
 from msgspec import Struct
 
-from tileset_tools.model.LegacyTileset import (
+from bn_tileset_tools.model.LegacyTileset import (
     LegacyFiller,
     LegacyTilesetDefault,
     LegacyTilesheet,

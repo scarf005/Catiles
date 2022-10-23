@@ -1,9 +1,9 @@
 from flupy import flu
 from pathlib import Path
 
-from tileset_tools.transform import tileconfig_decoder
-from tileset_tools.model.TileConfig import TileConfig
-from tileset_tools.util import lift_list
+from bn_tileset_tools.transform import tileconfig_decoder
+from bn_tileset_tools.model.TileConfig import TileConfig
+from bn_tileset_tools.util import lift_list
 
 
 def get_tileset_ids(config: TileConfig | Path) -> list[str]:
