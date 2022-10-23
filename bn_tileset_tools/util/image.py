@@ -1,5 +1,5 @@
 from io import BytesIO
-from typing import Iterable, NamedTuple
+from typing import NamedTuple
 
 from aiopathlib import AsyncPath
 from PIL import Image

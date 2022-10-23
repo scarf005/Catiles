@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import json
 from pathlib import Path
 from aiopathlib import AsyncPath
 import msgspec
@@ -10,9 +9,8 @@ import typer
 from typer import Option as Opt
 from rich.console import Console
 from asyncio import run as aiorun
-from bn_tileset_tools.util.coro import coro
-from bn_tileset_tools.transform import tileconfig_decoder
-from bn_tileset_tools.util.image import save_image
+from bn_tileset_tools.model.TileConfig import TileConfig
+from bn_tileset_tools.util import coro, save_image
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 console: Console = Console()
@@ -56,8 +54,7 @@ async def migrate(path: Path) -> None:
 
     given directory should contain a tile_config.json and a tile_info.json
     """
-
-    from json import loads, dumps
+    import json
     from bn_tileset_tools.transform import (
         tileset_from_legacy,
         get_merged_fallbacks,
@@ -68,7 +65,7 @@ async def migrate(path: Path) -> None:
     fallback = AsyncPath(path) / "fallback"
     tileset_path = AsyncPath(path) / "tileset.json"
 
-    config = tileconfig_decoder.decode(tile_config.read_bytes())
+    config = msgspec.json.decode(tile_config.read_bytes(), type=TileConfig)
     tileset = tileset_from_legacy(tile_info, fallback)
 
     encoded = msgspec.json.encode(tileset)
