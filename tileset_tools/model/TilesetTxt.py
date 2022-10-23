@@ -37,7 +37,7 @@ class TilesetTxt:
         res: list[tuple[str, str]] = (
             flu(text.splitlines())
             .map(lambda l: cls.COMMENT.match(l).group(1))  # type: ignore
-            .filter(lambda l: not cls.WHITESPACE.match(l))  # remove empty lines
+            .filter(lambda l: not cls.WHITESPACE.match(l))  # remove empty
             .map(lambda l: l.split(":"))
             .map(lambda l: tuple(v.strip() for v in l))
             .collect()
