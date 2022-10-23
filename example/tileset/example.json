@@ -1,0 +1,23 @@
+{
+  "default": {
+    "dimension": { "scale": 2, "col": 4, "x": -16, "y": -16 },
+    "sprite": { "w": 64, "h": 32 }
+  },
+  "sheet": [
+    { "file": "normal_items.png" },
+    { "file": "normal_monsters.png" },
+    {
+      "file": "wide.png",
+      "dimension": { "x": -16, "y": -16, "colums": 4 },
+      "sprite": {
+        "w": 64,
+        "h": 32
+      }
+    }
+  ],
+  "fallback": "fallback/",
+  "filler": {
+    "source": "https://github.com/CleverRaven/Cataclysm-DDA/tree/b2d1f9f6cf6fae9c5076d29f9779e0ca6c03c222/gfx/HoderTileset",
+    "exclude": ["ignore_dir", "dir/with/many/depth"]
+  }
+}
