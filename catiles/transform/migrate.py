@@ -7,15 +7,15 @@ from rich import print
 from rich.progress import track, Progress
 
 import msgspec
-from bn_tileset_tools.model import (
+from catiles.model import (
     Filler,
     Tileset,
     TilesetDefault,
     Tilesheet,
 )
-from bn_tileset_tools.model.TileConfig import TileConfig
-from bn_tileset_tools.transform.split_fallback import get_merged_fallbacks
-from bn_tileset_tools.util.image import save_image
+from catiles.model.TileConfig import TileConfig
+from catiles.transform.split_fallback import get_merged_fallbacks
+from catiles.util.image import save_image
 
 
 class LegacyType(IntEnum):

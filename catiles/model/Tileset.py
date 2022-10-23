@@ -1,6 +1,6 @@
 from msgspec import Struct
 
-from bn_tileset_tools.model.LegacyTileset import (
+from catiles.model.LegacyTileset import (
     LegacyFiller,
     LegacyTilesetDefault,
     LegacyTilesheet,

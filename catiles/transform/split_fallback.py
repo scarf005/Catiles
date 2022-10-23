@@ -5,8 +5,8 @@ from pathlib import Path
 from rich.progress import track
 from PIL import Image
 
-from bn_tileset_tools.model.TileConfig import Ascii, AsciiColor, TileConfig
-from bn_tileset_tools.util.image import Box
+from catiles.model.TileConfig import Ascii, AsciiColor, TileConfig
+from catiles.util.image import Box
 
 
 def split_fallback(path: Path) -> list[Image.Image]:

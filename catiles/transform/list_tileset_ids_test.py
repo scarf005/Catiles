@@ -1,5 +1,5 @@
-from bn_tileset_tools.transform import get_tileset_ids
-from bn_tileset_tools.examples import ASCII_PATH
+from catiles.transform import get_tileset_ids
+from catiles.examples import ASCII_PATH
 
 
 def test_get_tileset_ids():

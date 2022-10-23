@@ -3,8 +3,8 @@ from pathlib import Path
 
 import msgspec
 
-from bn_tileset_tools.model.TileConfig import TileConfig
-from bn_tileset_tools.util import lift_list
+from catiles.model.TileConfig import TileConfig
+from catiles.util import lift_list
 
 
 def get_tileset_ids(config: TileConfig | Path) -> list[str]:

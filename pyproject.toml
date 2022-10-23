@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "bn-tileset-tools"
-description = 'Cataclysm: Bright Nights Tileset Tools'
+name = "catiles"
+description = 'Catiles: Cataclysm: Bright Nights Tileset Manipulation Program'
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -24,15 +24,15 @@ dependencies = []
 dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://github.com/scarf005/bn-tileset-tools#readme"
-Issues = "https://github.com/scarf005/bn-tileset-tools/issues"
-Source = "https://github.com/scarf005/bn-tileset-tools"
+Documentation = "https://github.com/scarf005/catiles#readme"
+Issues = "https://github.com/scarf005/catiles/issues"
+Source = "https://github.com/scarf005/catiles"
 
 [project.scripts]
-bntools = "bn_tileset_tools.main:app"
+bntools = "catiles.main:app"
 
 [tool.hatch.version]
-path = "bn_tileset_tools/__about__.py"
+path = "catiles/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -59,27 +59,27 @@ dependencies = [
 [tool.hatch.envs.default.scripts]
 test = "pytest"
 test-parallel = "pytest --workers auto"
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=bn_tileset_tools --cov=tests"
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=catiles --cov=tests"
 no-cov = "cov --no-cov"
-lint = "black bn_tileset_tools"
-type = "dmypy check bn_tileset_tools"
+lint = "black catiles"
+type = "dmypy check catiles"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["310", "311"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-  "/bn_tileset_tools", "/*.md", "LICENSE.txt"
+  "/catiles", "/*.md", "LICENSE.txt"
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["bn_tileset_tools"]
+packages = ["catiles"]
 
 [tool.coverage.run]
 branch = true
 parallel = true
 omit = [
-  "bn_tileset_tools/__about__.py",
+  "catiles/__about__.py",
 ]
 
 [tool.coverage.report]

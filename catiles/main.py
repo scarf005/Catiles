@@ -9,8 +9,8 @@ import typer
 from typer import Option as Opt
 from rich.console import Console
 from asyncio import run as aiorun
-from bn_tileset_tools.model.TileConfig import TileConfig
-from bn_tileset_tools.util import coro, save_image
+from catiles.model.TileConfig import TileConfig
+from catiles.util import coro, save_image
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 console: Console = Console()
@@ -25,7 +25,7 @@ def tileset_ids(
     List all tileset ids in a tile_config.json file.
     You can also pass a directory containing it.
     """
-    from bn_tileset_tools.transform import get_tileset_ids
+    from catiles.transform import get_tileset_ids
 
     if path.is_dir():
         path /= "tile_config.json"
@@ -55,7 +55,7 @@ async def migrate(path: Path) -> None:
     given directory should contain a tile_config.json and a tile_info.json
     """
     import json
-    from bn_tileset_tools.transform import (
+    from catiles.transform import (
         tileset_from_legacy,
         get_merged_fallbacks,
     )
