@@ -71,8 +71,9 @@ def migrate_from(tile_info: Path, tile_config: Path) -> Tileset:
     return tileset
 
 
-root = Path("example/ascii")
-info = root / "tile_info.json"
-config = root / "tile_config.json"
+if __name__ == "__main__":
+    root = Path("example/ascii")
+    info = root / "tile_info.json"
+    config = root / "tile_config.json"
 
-migrate_from(info, config)
+    migrate_from(info, config)
