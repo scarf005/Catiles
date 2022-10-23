@@ -28,6 +28,9 @@ Documentation = "https://github.com/scarf005/tileset-tools#readme"
 Issues = "https://github.com/scarf005/tileset-tools/issues"
 Source = "https://github.com/scarf005/tileset-tools"
 
+[project.scripts]
+cimp = "tools:app"
+
 [tool.hatch.version]
 path = "tileset_tools/__about__.py"
 
@@ -35,6 +38,8 @@ path = "tileset_tools/__about__.py"
 dependencies = [
   "msgspec",
   "flupy>=1.2.0",
+  "rich",
+  "typer",
 ]
 
 [tool.hatch.envs.test]

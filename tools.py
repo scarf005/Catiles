@@ -1,29 +1,34 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
-from pprint import pprint
-
+from rich import print
 import typer
+from typer import Option as Opt
 
-from tileset_tools.list_tileset_ids import get_tileset_ids
+from tileset_tools.transform import get_tileset_ids
 
 app = typer.Typer(context_settings={"help_option_names": ["-h", "--help"]})
 
 
 @app.command(name="id")
-def tileset_ids(path: Path):
+def tileset_ids(
+    path: Path,
+    pretty: bool = Opt(False, "--pretty", help="Pretty print the output."),
+) -> None:
     """
     List all tileset ids in a tile_config.json file.
+    You can also pass a directory containing it.
     """
 
     if path.is_dir():
         path /= "tile_config.json"
 
-    pprint(get_tileset_ids(path))
+    ids = get_tileset_ids(path)
+    print(ids if pretty else "\n".join(ids))
 
 
 @app.command()
-def decompose(path: Path):
+def decompose(path: Path) -> None:
     """
     Decompose a tile_config.json file into its constituent parts.
     """
@@ -35,7 +40,7 @@ def decompose(path: Path):
 
 
 @app.command()
-def migrate(path: Path):
+def migrate(path: Path) -> None:
     """
     Migrate a `tile_info.json` file into `tileset.json`.
     """
