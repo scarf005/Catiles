@@ -1,23 +1,26 @@
 # Tileset Tools
 
-because I can't stand using `compose.py` and `decompose.py`
+~~it's actually CIMP: Cataclysm bright nights tIleset ManiPulation tool~~
 
-[![PyPI - Version](https://img.shields.io/pypi/v/tileset-tools.svg)](https://pypi.org/project/tileset-tools)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tileset-tools.svg)](https://pypi.org/project/tileset-tools)
 
------
+- because `compose.py` and `decompose.py` is too hard for me to use
+- currently unreleased because nothing works (yet)
+
+<!-- [![PyPI - Version](https://img.shields.io/pypi/v/tileset-tools.svg)](https://pypi.org/project/tileset-tools)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tileset-tools.svg)](https://pypi.org/project/tileset-tools) -->
+
+---
 
 **Table of Contents**
 
 - [Tileset Tools](#tileset-tools)
-  - [Installation](#installation)
   - [License](#license)
 
-## Installation
+<!-- ## Installation
 
 ```console
 pip install tileset-tools
-```
+``` -->
 
 ## License
 
