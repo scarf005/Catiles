@@ -1,18 +1,21 @@
 from enum import IntEnum, auto
 from typing import Any
+from aiopathlib import AsyncPath
 from flupy import flu
 from pathlib import Path
 from rich import print
-from rich.progress import track
+from rich.progress import track, Progress
 
 import msgspec
-from bn_tileset_tools.transform import tileconfig_decoder
 from bn_tileset_tools.model import (
     Filler,
     Tileset,
     TilesetDefault,
     Tilesheet,
 )
+from bn_tileset_tools.model.TileConfig import TileConfig
+from bn_tileset_tools.transform.split_fallback import get_merged_fallbacks
+from bn_tileset_tools.util.image import save_image
 
 
 class LegacyType(IntEnum):
@@ -42,15 +45,15 @@ def group_objects(obj: LegacyObject) -> LegacyType:
             return match_inner(next(iter(obj.values())))
 
 
-def migrate_from(tile_info: Path, tile_config: Path) -> Tileset:
+def tileset_from_legacy(tile_info: Path, fallback_path: Path) -> Tileset:
     values = (
         flu(msgspec.json.decode(tile_info.read_bytes()))
         .group_by(group_objects, sort=False)
         .collect()
     )
 
-    kwargs: dict[str, Any] = {"fallback": Path("fallback")}
-    for value in track(values, description="Converting"):
+    kwargs: dict[str, Any] = {"fallback": str(fallback_path)}
+    for value in track(values, description="Converting to tileset"):
         match value:
             case (LegacyType.DEFAULT, default):
                 kwargs["default"] = TilesetDefault.from_legacy(default.first())
@@ -63,12 +66,7 @@ def migrate_from(tile_info: Path, tile_config: Path) -> Tileset:
             case _:
                 pass
 
-    tileset = Tileset(**kwargs)
-    print(tileset)
-
-    res = tileconfig_decoder.decode(tile_config.read_bytes())
-    print(res.fallback.ascii)
-    return tileset
+    return Tileset(**kwargs)
 
 
 if __name__ == "__main__":
@@ -76,4 +74,4 @@ if __name__ == "__main__":
     info = root / "tile_info.json"
     config = root / "tile_config.json"
 
-    migrate_from(info, config)
+    tileset_from_legacy(info, config)

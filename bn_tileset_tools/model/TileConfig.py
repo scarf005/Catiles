@@ -32,6 +32,11 @@ class Tile(TileBase):
     additional_tiles: list[AdditionalTile] | None = None
 
 
+AsciiColor = Literal[
+    "WHITE", "BLACK", "RED", "YELLOW", "GREEN", "CYAN", "BLUE", "MAGENTA"
+]
+
+
 class Ascii(Struct):
     """Individual colored ASCII sheet data.
 
@@ -41,9 +46,10 @@ class Ascii(Struct):
 
     offset: int
     bold: bool
-    color: Literal[
-        "WHITE", "BLACK", "RED", "YELLOW", "GREEN", "CYAN", "BLUE", "MAGENTA"
-    ]
+    color: AsciiColor
+
+    def __iter__(self):
+        yield from (self.offset, self.bold, self.color)
 
 
 class SpriteSheetBase(Struct, omit_defaults=True):
@@ -89,6 +95,11 @@ class TileConfig(
             .filter(lambda x: x.ascii is not None)
             .first()
         )
+
+    @property
+    def sprite(self) -> tuple[int, int]:
+        """get (width, height) of a sprite"""
+        return self.tile_info.width, self.tile_info.height
 
 
 if __name__ == "__main__":

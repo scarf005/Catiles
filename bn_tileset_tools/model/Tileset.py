@@ -1,5 +1,3 @@
-from pathlib import Path
-from flupy import flu
 from msgspec import Struct
 
 from bn_tileset_tools.model.LegacyTileset import (
@@ -78,7 +76,7 @@ class TilesetDefault(TilesetBase):
 
 
 class Tilesheet(TilesetBase):
-    file: Path
+    file: str
     dimension: Dimension | None = None
     sprite: Sprite | None = None
 
@@ -86,17 +84,17 @@ class Tilesheet(TilesetBase):
     def from_legacy(cls, legacy: LegacyTilesheet):
         file, value = next(iter(legacy.items()))
         dimension = Dimension.from_legacy_tilesheet(value)
-        return cls(Path(file), dimension)
+        return cls(file, dimension)
 
 
 class Filler(TilesetBase):
     source: str
-    exclude: list[Path]
+    exclude: list[str]
 
     @classmethod
     def from_legacy(cls, legacy: LegacyFiller):
         source, value = next(iter(legacy.items()))
-        return cls(source, flu(value["exclude"]).map(Path).to_list())
+        return cls(source, value["exclude"])
 
 
 class Tileset(TilesetBase):
@@ -106,5 +104,5 @@ class Tileset(TilesetBase):
 
     default: TilesetDefault
     sheet: list[Tilesheet]
-    fallback: Path
+    fallback: str
     filler: Filler | None = None

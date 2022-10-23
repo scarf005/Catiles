@@ -1,4 +1,4 @@
 from pathlib import Path
 
-example = Path("example")
-ascii_path = example / "ascii"
+EXAMPLE = Path("example")
+ASCII_PATH = EXAMPLE / "ascii"
