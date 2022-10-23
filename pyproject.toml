@@ -20,7 +20,12 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = []
+dependencies = [
+  "msgspec",
+  "flupy>=1.2.0",
+  "rich",
+  "typer",
+]
 dynamic = ["version"]
 
 [project.urls]
@@ -31,16 +36,14 @@ Source = "https://github.com/scarf005/catiles"
 [project.scripts]
 bntools = "catiles.main:app"
 
+[tool.semantic_release]
+version_variable = "catiles/__about__.py:__version__"
+
 [tool.hatch.version]
 path = "catiles/__about__.py"
 
 [tool.hatch.envs.default]
-dependencies = [
-  "msgspec",
-  "flupy>=1.2.0",
-  "rich",
-  "typer",
-]
+dependencies = []
 
 [tool.hatch.envs.test]
 dependencies = [
